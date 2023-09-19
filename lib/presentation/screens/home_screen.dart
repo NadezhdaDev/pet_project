@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pet_project/domain/services/translation/translation.dart';
+import 'package:pet_project/presentation/state/locale/locale_cubit.dart';
+import 'package:pet_project/presentation/state/locale/locale_state.dart';
 
 import '../../domain/model/project.dart';
+import '../constants/pp_color.dart';
 import '../state/project/project_cubit.dart';
 import '../state/project/project_state.dart';
 import 'create_project_screen.dart';
@@ -31,38 +35,41 @@ class _HomeScreenState extends State<HomeScreen> {
       )),
       child: BlocBuilder<ProjectCubit, ProjectState>(
           builder: (contextCubit, state) {
-        return Scaffold(
-          body: Center(
-            child: <Widget>[
-              CreateProjectScreen(
-                projectCubit: contextCubit.read<ProjectCubit>(),
+        return BlocBuilder<LocaleCubit, LocaleState>(
+          builder: (contextLocaleCubit, state) {
+            return Scaffold(
+              body: Center(
+                child: <Widget>[
+                  CreateProjectScreen(
+                    projectCubit: contextCubit.read<ProjectCubit>(),
+                  ),
+                  HistoryProjectsScreen(
+                    projectCubit: contextCubit.read<ProjectCubit>(),
+                  ),
+                ].elementAt(_selectedIndex),
               ),
-              HistoryProjectsScreen(
-                projectCubit: contextCubit.read<ProjectCubit>(),
+              bottomNavigationBar: BottomNavigationBar(
+                selectedLabelStyle:
+                    const TextStyle(fontFamily: "Destroy", fontSize: 20.0),
+                unselectedLabelStyle:
+                    const TextStyle(fontFamily: "Destroy", fontSize: 18.0),
+                elevation: 6.0,
+                items: <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(
+                    icon: const Icon(Icons.home),
+                    label: Translator().newProject,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: const Icon(Icons.business),
+                    label: Translator().allProjects,
+                  ),
+                ],
+                currentIndex: _selectedIndex,
+                selectedItemColor: PPColor.buttonPink,
+                onTap: _onItemTapped,
               ),
-            ].elementAt(_selectedIndex),
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            selectedLabelStyle:
-                const TextStyle(fontFamily: "Destroy", fontSize: 20.0),
-            unselectedLabelStyle:
-                const TextStyle(fontFamily: "Destroy", fontSize: 18.0),
-            elevation: 6.0,
-            //backgroundColor: Colors.pinkAccent,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'New project',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.business),
-                label: 'All Projects',
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.pinkAccent,
-            onTap: _onItemTapped,
-          ),
+            );
+          }
         );
       }),
     );

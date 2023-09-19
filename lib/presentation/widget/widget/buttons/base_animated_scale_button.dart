@@ -5,10 +5,10 @@ import '../../../state/state_factory/screen_state_factory.dart';
 
 abstract class BaseAnimatedScaleButtonState extends State<ScreenStateFactory>
     with SingleTickerProviderStateMixin {
-  final String label;
+  final String? label;
   final Function onPressed;
 
-  BaseAnimatedScaleButtonState({required this.label, required this.onPressed});
+  BaseAnimatedScaleButtonState({this.label, required this.onPressed});
 
   late AnimationController controller;
   late Animation<double> _animation;

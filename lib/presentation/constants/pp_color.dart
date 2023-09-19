@@ -1,7 +1,10 @@
-import 'dart:ui';
+
+import 'package:flutter/material.dart';
 
 class PPColor {
-  static const mainBackgroundColor = Color(0xff020212) ;
-  static const buttonColor = Color(0xff072729) ;
-  static const buttonColorLight = Color(0xff290713) ;
+  static const mainBackgroundColor = Colors.white ;
+  static const editorBackgroundColor = Colors.black12 ;
+  static const green = Colors.green ;
+  static const buttonPink = Colors.pinkAccent ;
+  static const splashScreenBackgroundColor = Colors.blueAccent ;
 }

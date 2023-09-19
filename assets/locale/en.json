@@ -1,4 +1,11 @@
 {
   "pet_project": "Pet project",
-  "enter": "Enter"
+  "enter": "Enter",
+  "permission_warning": "For further operation of the application, you need to gain access to the data",
+  "cansel": "Cansel",
+  "setting": "Setting",
+  "add_photo": "Add photo",
+  "not_yet_impl":"Not yet implemented!",
+  "new_project": "New project",
+  "all_projects":"All projects"
 }

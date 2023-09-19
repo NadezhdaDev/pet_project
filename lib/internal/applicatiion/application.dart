@@ -48,7 +48,7 @@ class _ApplicationState extends State<Application> {
                   ),
                   child: child ??
                       Container(
-                        color: Colors.amber,//SMColors.backgroundBlack,
+                        color: Colors.amber,
                       ),
                 ),
                 // locale

@@ -1,16 +1,22 @@
-
 import 'package:flutter/material.dart';
 
 import 'base_animated_scale_button.dart';
 
-class GradientScaleButton extends BaseAnimatedScaleButtonState {
-  GradientScaleButton({ super.label, required super.onPressed});
+class RoundedScaleButton extends BaseAnimatedScaleButtonState {
+  final Icon? buttonsIcon;
+
+  RoundedScaleButton({required super.onPressed, this.buttonsIcon, super.label});
 
   @override
   Widget button() => DecoratedBox(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.0),
-            gradient: const LinearGradient(colors: [Colors.lightBlue, Colors.lightBlueAccent])),
+          borderRadius: BorderRadius.circular(28.0),
+          color: Colors.pinkAccent,
+          border: Border.all(
+            color: Colors.blueAccent,
+            width: 2.0,
+          ),
+        ),
         child: TextButton(
           style: const ButtonStyle(
             overlayColor: MaterialStatePropertyAll<Color>(Colors.transparent),
@@ -22,8 +28,8 @@ class GradientScaleButton extends BaseAnimatedScaleButtonState {
             onPressed();
           },
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Text(label!= null ? label!: '', style:const TextStyle(color: Colors.blueAccent, fontSize: 20.0)),
+            padding: const EdgeInsets.all(10.0),
+            child: buttonsIcon?? const Icon(Icons.add),
           ),
         ),
       );

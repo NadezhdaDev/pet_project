@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 
 import '../../domain/model/project.dart';
 import '../../domain/repository/project_repository.dart';
-import '../maper/project_maper.dart';
+import '../mapper/project_maper.dart';
 import '../model/db_project_model.dart';
 
 class ProjectDBRepository implements ProjectRepository {

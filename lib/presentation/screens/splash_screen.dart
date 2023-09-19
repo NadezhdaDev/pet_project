@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../data/prefs/pp_prefs.dart';
 import '../../domain/services/translation/app_translations.dart';
+import '../constants/pp_color.dart';
 import '../navigation/navigation.dart';
 import '../navigation/pp_route_path.dart';
 
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: PPColor.splashScreenBackgroundColor,
       body: Center(
           child: Text(
             'HELLO',

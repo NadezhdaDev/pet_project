@@ -33,12 +33,13 @@ class HistoryProjectsScreen extends StatelessWidget {
                     if (snapshot.hasData) {
                       return GestureDetector(
                         child: Image.file(snapshot.data!),
-                        onTap: () =>
-                          navigate(
-                            PPRoutePath.editProjectScreen,
-                            argument: projectCubit,
-                            replace: false,
-                          ),
+                        onTap: () async => projectCubit.setProject(e).then(
+                              (value) => navigate(
+                                PPRoutePath.editProjectScreen,
+                                argument: projectCubit,
+                                replace: false,
+                              ),
+                            ),
                       );
                     }
                     return const SizedBox(
