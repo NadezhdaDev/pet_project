@@ -95,7 +95,7 @@ class _EditProjectScreenState extends State<EditProjectScreen> {
               },
             ),
             Padding(
-              padding: EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(30.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -105,7 +105,7 @@ class _EditProjectScreenState extends State<EditProjectScreen> {
                     }),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 10.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: ScreenStateFactory(
                       stateFactory: () => RoundedScaleButton(
                           onPressed: () {
