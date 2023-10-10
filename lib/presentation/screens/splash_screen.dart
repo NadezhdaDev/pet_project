@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pet_lib/data_tutorial.dart';
 
 import '../../data/prefs/pp_prefs.dart';
 import '../../domain/services/translation/app_translations.dart';
+import '../../domain/services/translation/translation.dart';
 import '../constants/pp_color.dart';
 import '../navigation/navigation.dart';
 import '../navigation/pp_route_path.dart';
@@ -26,25 +28,37 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: PPColor.splashScreenBackgroundColor,
       body: Center(
           child: Text(
-            'HELLO',
-            style: TextStyle(fontFamily: 'Destroy', fontSize: 30),
-          )),
+        'HELLO',
+        style: TextStyle(fontFamily: 'Destroy', fontSize: 30),
+      )),
     );
   }
 
-
-  void init(BuildContext context) async{
+  void init(BuildContext context) async {
     await AppTranslations().loadJsonLocale(context);
 
-    if(PPPrefs().isFirstLaunch()){
+    if (PPPrefs().isFirstLaunch()) {
       await PPPrefs().setFirstLaunch(false);
-      await PPPrefs().setLocale(PPPrefs().getLocale()??const Locale('en'));
+      await PPPrefs().setLocale(PPPrefs().getLocale() ?? const Locale('en'));
+      navigate(
+        PPRoutePath.tutorial,
+        argument: DataTutorial(
+          startPageTitle: Translator().tutorialStartPageTitle,
+          startPageSubtitle: Translator().tutorialStartPageSubtitle,
+          videoPageTitle: Translator().tutorialVideoPageTitle,
+          endPageTitle: Translator().tutorialEndPageTitle,
+          nextButtonLabel: Translator().next,
+          finishTutorialFunction: () => _routeToHome(),
+        ),
+        replace: true,
+      );
+    } else {
+      _routeToHome();
     }
-
-    navigate(
-      PPRoutePath.home,
-      replace: true,
-    );
-
   }
+
+  void _routeToHome() => navigate(
+        PPRoutePath.home,
+        replace: true,
+      );
 }

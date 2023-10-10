@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:pet_lib/data_tutorial.dart';
+import 'package:pet_lib/pet_lib.dart';
 import 'package:pet_project/presentation/navigation/pp_route_path.dart';
 
 import '../screens/edit_project_screen.dart';
@@ -21,6 +23,9 @@ class PPRouter {
       case PPRoutePath.editProjectScreen:
         return _routeEditProjectScreen(routeSettings.arguments as ProjectCubit);
 
+      case PPRoutePath.tutorial:
+        return _routeTutorial(routeSettings.arguments as DataTutorial);
+
       default:
         throw Exception(
           'Unsupported navigation route: ${routeSettings.name}!',
@@ -35,6 +40,11 @@ class PPRouter {
   static Route _routeHome() => MaterialPageRoute(
         builder: (_) => const HomeScreen(),
       );
+
+  static Route _routeTutorial(DataTutorial dataTutorial) => MaterialPageRoute(
+        builder: (_) => Tutorial(dataTutorial: dataTutorial).getTutorial(),
+      );
+
 
   static Route _routeEditProjectScreen(ProjectCubit projectCubit) => MaterialPageRoute(
         builder: (_) => EditProjectScreen(

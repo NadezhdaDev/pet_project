@@ -7,5 +7,10 @@
   "add_photo": "Add photo",
   "not_yet_impl":"Not yet implemented!",
   "new_project": "New project",
-  "all_projects":"All projects"
+  "all_projects":"All projects",
+  "next": "Next",
+  "tutorial_start_page_title": "Welcome to PetProject",
+  "tutorial_start_page_subtitle": "Test project for hh.ru",
+  "tutorial_video_page_title": "The technologies in this application were used as an example and sometimes had no reasonable need",
+  "tutorial_end_page_title": "For example, submitting a tutorial to the library"
 }

@@ -48,6 +48,8 @@ dependencies:
   path_provider: ^2.1.0
   uuid: ^3.0.7
   google_mobile_ads: ^3.0.0
+  pet_lib:
+    path: ../pet_lib
 
 dev_dependencies:
   flutter_test:

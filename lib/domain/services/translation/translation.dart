@@ -19,5 +19,11 @@ class Translator {
   String get notYetImpl=> AppTranslations().getTranslateString('not_yet_impl');
   String get newProject=> AppTranslations().getTranslateString('new_project');
   String get allProjects=> AppTranslations().getTranslateString('all_projects');
+  String get next=> AppTranslations().getTranslateString('next');
+  String get tutorialStartPageTitle=> AppTranslations().getTranslateString('tutorial_start_page_title');
+  String get tutorialStartPageSubtitle=> AppTranslations().getTranslateString('tutorial_start_page_subtitle');
+  String get tutorialVideoPageTitle=> AppTranslations().getTranslateString('tutorial_video_page_title');
+  String get tutorialEndPageTitle=> AppTranslations().getTranslateString('tutorial_end_page_title');
+
 
 }

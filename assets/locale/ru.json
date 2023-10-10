@@ -7,5 +7,12 @@
   "add_photo": "Добавить фото",
   "not_yet_impl":"Еще не реализовано!",
   "new_project": "Новый проект",
-  "all_projects":"Все проекты"
+  "all_projects":"Все проекты",
+  "next": "Далее",
+  "tutorial_start_page_title": "Добро пожаловать в приложение PetProject",
+  "tutorial_start_page_subtitle": "Тестоое приложение для hh.ru",
+  "tutorial_video_page_title": "Технологии в этом приложение использовались в качестве примера и иногда не имеют никакой рациональной необходимости",
+  "tutorial_end_page_title": "Например, вынесение туториала в библиотеку"
+
+
 }
