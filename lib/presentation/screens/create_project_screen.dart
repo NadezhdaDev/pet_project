@@ -10,8 +10,8 @@ import 'package:pet_project/presentation/state/locale/locale_cubit.dart';
 import 'package:pet_project/presentation/state/locale/locale_state.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../data/repository/project_db_repository.dart';
 import '../../domain/model/project.dart';
+import '../../domain/repository/project_repository.dart';
 import '../../domain/services/ads/google_ads.dart';
 import '../../domain/services/translation/translation.dart';
 import '../attributes/pp_directory_path.dart';
@@ -61,16 +61,21 @@ class CreateProjectScreen extends StatelessWidget {
                       }
                     });
                   },
-                  child: const Text('Ads', style: TextStyle(color: Colors.red),),
+                  child: const Text(
+                    'Ads',
+                    style: TextStyle(color: Colors.red),
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
                     contextCubit.read<LocaleCubit>().setLocale(
                         context,
                         Translator.supportedLocales.firstWhere((element) =>
-                        element != contextCubit.read<LocaleCubit>().locale));
+                            element !=
+                            contextCubit.read<LocaleCubit>().locale));
                   },
-                  child: Text(contextCubit.read<LocaleCubit>().locale.toString()),
+                  child:
+                      Text(contextCubit.read<LocaleCubit>().locale.toString()),
                 ),
               ],
             ),
@@ -97,7 +102,9 @@ class CreateProjectScreen extends StatelessWidget {
                         addPhotoWithGallery(idProject).then(
                           (value) => value
                               ? Future.wait([
-                                  ProjectDBRepository().add(project),
+                                  context
+                                      .read<ProjectRepository>()
+                                      .add(project),
                                   projectCubit.setProject(project),
                                 ]).then(
                                   (value) => navigate(

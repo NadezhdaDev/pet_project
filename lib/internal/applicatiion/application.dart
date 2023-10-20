@@ -53,8 +53,6 @@ class _ApplicationState extends State<Application> {
                 ),
                 // locale
                 locale: localeState.locale,
-
-                //theme:
                 navigatorKey: globalKey,
                 initialRoute: PPRoutePath.splashScreen,
                 onGenerateRoute: (routeSettings) => PPRouter.getAppRouteFactory(

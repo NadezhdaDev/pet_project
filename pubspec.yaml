@@ -50,6 +50,9 @@ dependencies:
   google_mobile_ads: ^3.0.0
   pet_lib:
     path: ../pet_lib
+  firebase_core: ^2.17.0
+  firebase_remote_config: ^4.3.0
+  flutterfire_cli: ^0.2.7
 
 dev_dependencies:
   flutter_test:

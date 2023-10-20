@@ -4,6 +4,7 @@ import 'package:pet_lib/data_tutorial.dart';
 import '../../data/prefs/pp_prefs.dart';
 import '../../domain/services/translation/app_translations.dart';
 import '../../domain/services/translation/translation.dart';
+import '../../internal/modules/remoteconfig/remote_config_module.dart';
 import '../constants/pp_color.dart';
 import '../navigation/navigation.dart';
 import '../navigation/pp_route_path.dart';
@@ -40,18 +41,20 @@ class _SplashScreenState extends State<SplashScreen> {
     if (PPPrefs().isFirstLaunch()) {
       await PPPrefs().setFirstLaunch(false);
       await PPPrefs().setLocale(PPPrefs().getLocale() ?? const Locale('en'));
-      navigate(
-        PPRoutePath.tutorial,
-        argument: DataTutorial(
-          startPageTitle: Translator().tutorialStartPageTitle,
-          startPageSubtitle: Translator().tutorialStartPageSubtitle,
-          videoPageTitle: Translator().tutorialVideoPageTitle,
-          endPageTitle: Translator().tutorialEndPageTitle,
-          nextButtonLabel: Translator().next,
-          finishTutorialFunction: () => _routeToHome(),
-        ),
-        replace: true,
-      );
+      RemoteConfigModule.get().isShowTutorial()
+          ? navigate(
+              PPRoutePath.tutorial,
+              argument: DataTutorial(
+                startPageTitle: Translator().tutorialStartPageTitle,
+                startPageSubtitle: Translator().tutorialStartPageSubtitle,
+                videoPageTitle: Translator().tutorialVideoPageTitle,
+                endPageTitle: Translator().tutorialEndPageTitle,
+                nextButtonLabel: Translator().next,
+                finishTutorialFunction: () => _routeToHome(),
+              ),
+              replace: true,
+            )
+          : _routeToHome();
     } else {
       _routeToHome();
     }
