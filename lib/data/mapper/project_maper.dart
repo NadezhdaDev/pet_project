@@ -1,5 +1,3 @@
-
-
 import '../../domain/model/project.dart';
 import '../model/db_project_model.dart';
 
@@ -12,6 +10,7 @@ class ProjectMapper {
 
     return dbModel;
   }
+
 
   Project getProject(DBProjectModel dbModel) {
     return Project(
