@@ -11,14 +11,16 @@ class PPRemoteConfig {
   }
 
   static const _showTutorial = 'show_tutorial';
+  static const _getStringTest = 'test';
+
 
   Future<void> init() async {
     try {
       await _instance.ensureInitialized();
       await _instance.setConfigSettings(
         RemoteConfigSettings(
-          fetchTimeout: const Duration(seconds: 10),
-          minimumFetchInterval: const Duration(hours: 1),
+          fetchTimeout: const Duration(seconds: 2),
+          minimumFetchInterval: const Duration(seconds: 2),
         ),
       );
       await _instance.fetchAndActivate();
@@ -33,9 +35,11 @@ class PPRemoteConfig {
 
 
   bool isShowTutorial() => _instance.getBool(_showTutorial);
+  String getStringTest() => _instance.getString(_getStringTest);
 
 
   final _defaults = <String, dynamic> {
     _showTutorial: true,
+    _getStringTest:'NO WIN'
   };
 }
