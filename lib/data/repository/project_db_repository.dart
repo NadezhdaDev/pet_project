@@ -6,28 +6,28 @@ import '../mapper/project_maper.dart';
 import '../model/db_project_model.dart';
 
 class ProjectDBRepository implements ProjectRepository {
-  static const boxName = 'projects';
-  static late Box<DBProjectModel> box;
-  final projectMapper = ProjectMapper();
+  static const _boxName = 'projects';
+  static late Box<DBProjectModel> _box;
+  final _projectMapper = ProjectMapper();
 
   @override
   Future<void> init() async {
     Hive.registerAdapter<DBProjectModel>(DBProjectModelAdapter());
 
-    return Hive.openBox<DBProjectModel>(boxName).then(
+    return Hive.openBox<DBProjectModel>(_boxName).then(
           (_) {
-        box = Hive.box<DBProjectModel>(boxName);
+        _box = Hive.box<DBProjectModel>(_boxName);
       },
     );
   }
 
   @override
   List<Project> getProjects() {
-    final projects = box.values;
+    final projects = _box.values;
 
     final projectList = projects
         .map<Project>(
-          (e) => projectMapper.getProject(e),
+          (e) => _projectMapper.getProject(e),
     )
         .toList();
     return projectList;
@@ -35,17 +35,17 @@ class ProjectDBRepository implements ProjectRepository {
 
   @override
   Future<void> add(Project project) async {
-    final model =  projectMapper.getDBModel(project);
-    await box.add(model);
+    final model =  _projectMapper.getDBModel(project);
+    await _box.add(model);
   }
 
   @override
   Future<void> update(Project project) {
-    if (!box.values.map((e) => e.uuid).toList().contains(project.uuid)) {
+    if (!_box.values.map((e) => e.uuid).toList().contains(project.uuid)) {
       return Future.value(null);
     }
 
-    var dbModel = box.values.firstWhere((element) => element.uuid == project.uuid);
+    var dbModel = _box.values.firstWhere((element) => element.uuid == project.uuid);
 
     //update dbModel element
     //final newDBModel = projectMapper.getDBModel(project);
@@ -56,7 +56,7 @@ class ProjectDBRepository implements ProjectRepository {
 
   @override
   Future<void> remove(Project project) async {
-    var dbModel = box.values.firstWhere((element) => element.uuid == project.uuid);
+    var dbModel = _box.values.firstWhere((element) => element.uuid == project.uuid);
 
     return dbModel.delete();
   }

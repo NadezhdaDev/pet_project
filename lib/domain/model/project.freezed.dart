@@ -63,20 +63,21 @@ class _$ProjectCopyWithImpl<$Res, $Val extends Project>
 }
 
 /// @nodoc
-abstract class _$$_ProjectCopyWith<$Res> implements $ProjectCopyWith<$Res> {
-  factory _$$_ProjectCopyWith(
-          _$_Project value, $Res Function(_$_Project) then) =
-      __$$_ProjectCopyWithImpl<$Res>;
+abstract class _$$ProjectImplCopyWith<$Res> implements $ProjectCopyWith<$Res> {
+  factory _$$ProjectImplCopyWith(
+          _$ProjectImpl value, $Res Function(_$ProjectImpl) then) =
+      __$$ProjectImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String uuid, String? imagePath});
 }
 
 /// @nodoc
-class __$$_ProjectCopyWithImpl<$Res>
-    extends _$ProjectCopyWithImpl<$Res, _$_Project>
-    implements _$$_ProjectCopyWith<$Res> {
-  __$$_ProjectCopyWithImpl(_$_Project _value, $Res Function(_$_Project) _then)
+class __$$ProjectImplCopyWithImpl<$Res>
+    extends _$ProjectCopyWithImpl<$Res, _$ProjectImpl>
+    implements _$$ProjectImplCopyWith<$Res> {
+  __$$ProjectImplCopyWithImpl(
+      _$ProjectImpl _value, $Res Function(_$ProjectImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +86,7 @@ class __$$_ProjectCopyWithImpl<$Res>
     Object? uuid = null,
     Object? imagePath = freezed,
   }) {
-    return _then(_$_Project(
+    return _then(_$ProjectImpl(
       uuid: null == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
@@ -100,8 +101,8 @@ class __$$_ProjectCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Project implements _Project {
-  _$_Project({required this.uuid, this.imagePath});
+class _$ProjectImpl implements _Project {
+  _$ProjectImpl({required this.uuid, this.imagePath});
 
   @override
   String uuid;
@@ -116,12 +117,12 @@ class _$_Project implements _Project {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProjectCopyWith<_$_Project> get copyWith =>
-      __$$_ProjectCopyWithImpl<_$_Project>(this, _$identity);
+  _$$ProjectImplCopyWith<_$ProjectImpl> get copyWith =>
+      __$$ProjectImplCopyWithImpl<_$ProjectImpl>(this, _$identity);
 }
 
 abstract class _Project implements Project {
-  factory _Project({required String uuid, String? imagePath}) = _$_Project;
+  factory _Project({required String uuid, String? imagePath}) = _$ProjectImpl;
 
   @override
   String get uuid;
@@ -131,6 +132,6 @@ abstract class _Project implements Project {
   set imagePath(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$_ProjectCopyWith<_$_Project> get copyWith =>
+  _$$ProjectImplCopyWith<_$ProjectImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

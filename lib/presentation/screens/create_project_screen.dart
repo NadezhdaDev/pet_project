@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,6 +47,9 @@ class CreateProjectScreen extends StatelessWidget {
                     side: const BorderSide(width: 5.0, color: Colors.red),
                   ),
                   onPressed: () async {
+                    await FirebaseAnalytics.instance.logEvent(
+                      name: 'watch_ads',
+                    );
                     final petProjectLibAdsPlugin = RewardedAds();
                     await petProjectLibAdsPlugin.loadAd(errorFunction: () {
                       if (kDebugMode) {

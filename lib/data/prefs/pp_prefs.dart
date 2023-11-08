@@ -7,14 +7,16 @@ import '../../domain/services/translation/translation.dart';
 
 
 class PPPrefs {
-  SharedPreferences prefs = GetIt.instance<SharedPreferences>();
+
+  PPPrefs([SharedPreferences? prefsExample]) : _prefs = prefsExample ?? GetIt.instance<SharedPreferences>();
+  final SharedPreferences _prefs;
 
   final String _keyLocale = 'prefs_locale';
   final String _keyIsFirstLaunch = 'prefs_is_first_launch';
 
   Locale? getLocale() {
-    if (prefs.getString(_keyLocale) != null) {
-      return Locale(prefs.getString(_keyLocale)!);
+    if (_prefs.getString(_keyLocale) != null) {
+      return Locale(_prefs.getString(_keyLocale)!);
     }
 
     if (Translator.supportedLocales.contains(Locale(ui.window.locale.languageCode))) {
@@ -25,12 +27,12 @@ class PPPrefs {
   }
 
   Future<void> setLocale(Locale locale) async {
-    await prefs.setString(_keyLocale, locale.languageCode);
+    await _prefs.setString(_keyLocale, locale.languageCode);
   }
 
-  bool isFirstLaunch() => prefs.getBool(_keyIsFirstLaunch)??true;
+  bool isFirstLaunch() => _prefs.getBool(_keyIsFirstLaunch)??true;
 
-  Future<void> setFirstLaunch(bool isFirstLaunch) => prefs.setBool(_keyIsFirstLaunch, isFirstLaunch);
+  Future<void> setFirstLaunch(bool isFirstLaunch) => _prefs.setBool(_keyIsFirstLaunch, isFirstLaunch);
 
 
 }

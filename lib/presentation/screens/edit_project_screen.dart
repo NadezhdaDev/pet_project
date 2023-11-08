@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pet_project/domain/services/translation/translation.dart';
@@ -31,6 +32,12 @@ class _EditProjectScreenState extends State<EditProjectScreen> {
 
   @override
   void initState() {
+    FirebaseAnalytics.instance.logEvent(
+      name: 'edit_project_screen',
+      parameters: {
+        'pet_project_screen': 'edit',
+      },
+    );
     // TODO: implement initState
     super.initState();
   }
